@@ -1,2 +1,7 @@
 # angular
-An SPA (Single Page Application) which can create and arrange cards in three different columns. 
+An SPA (Single Page Application) which can create and arrange cards in three different columns.
+
+# Design Approach
+
+This simple SPA consists of a button to add new cards and 3 columns for adding the cards. Each card will have a title and a description. 
+On clicking the 'Add card' button a modal is popped up to insert the details for the new card. After fetching the details, validation is done using the ```validate``` function. If validation is successful, the card gets written to the ```cards``` array by calling the ```submit``` function. The array is then stringified and is stored on the ```localStorage``` object with keyname ```cards```. When loading the page for the first time, it checks for the ```cards``` key in the localStorage. If it's found, then the data from object is loaded. This is how data persistence works even after reloading. When clicking on created cards, the ```edit``` is called, which puts the edit flag true to make the ```submit``` function know that it is an edit operation. When editing, a new object is created from the data on the form (which is populated using the values fetched using the id of the card from cards array) and the card with the fetched id is deleted. This will automatically place cards at the end of every column if column changes. Displaying of cards in the DOM is done through the ```show_cards``` function. It displays the cards according to the data in the card array dynamically. Deleting of cards is done by using the ```splice``` function which deletes the selected card from the array.
